@@ -1,0 +1,84 @@
+body {
+  font-family: 'Courier New', monospace;
+  margin: 2rem;
+  text-align: center;
+  background-color: #0d0d0d;
+  color: #c0fffc;
+}
+
+.panel {
+  display: inline-block;
+  padding: 2rem;
+  border: 2px solid #0ff;
+  box-shadow: 0 0 15px #0ff;
+}
+
+.inputs div {
+  margin-bottom: 1rem;
+}
+
+input[type="password"] {
+  padding: 0.5rem;
+  background: #222;
+  border: 1px solid #0ff;
+  color: #0ff;
+  box-shadow: 0 0 5px #0ff;
+}
+
+button {
+  padding: 0.6rem 1.2rem;
+  background: transparent;
+  border: 2px solid #0ff;
+  color: #0ff;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 0 8px #0ff;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: rgba(0, 255, 255, 0.2);
+}
+
+.indicator {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+.success {
+  background-color: #0f0;
+  border-radius: 50%;
+  box-shadow: 0 0 5px #0f0;
+}
+
+.error {
+  background-color: red;
+  border-radius: 50%;
+  box-shadow: 0 0 5px red;
+}
+
+#message {
+  display: none;
+  margin-top: 2rem;
+  font-size: 2rem;
+  color: #0f0;
+  text-shadow: 0 0 10px #0f0, 0 0 20px #0f0;
+  animation: fade 1s forwards, flicker 2s linear infinite;
+}
+
+#message.show {
+  display: block;
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: 0.4; }
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
