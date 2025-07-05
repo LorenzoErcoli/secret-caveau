@@ -16,12 +16,18 @@ document.getElementById('submitBtn').addEventListener('click', function () {
     }
   });
   const msg = document.getElementById('message');
+  const lock = document.getElementById('lock');
+  const btn = document.getElementById('submitBtn');
   if (allCorrect) {
-    msg.textContent = 'Caveau aperto';
     document.querySelector('.inputs').style.display = 'none';
-    msg.classList.add('show');
+    lock.classList.add('open');
+    btn.classList.add('fade');
+    setTimeout(() => {
+      msg.textContent = 'ACCESSO CONCESSO';
+      msg.className = 'show glow';
+    }, 1000);
   } else {
-    msg.textContent = '';
-    msg.classList.remove('show');
+    msg.textContent = 'ACCESSO NEGATO';
+    msg.className = 'show error';
   }
 });
