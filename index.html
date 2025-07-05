@@ -12,19 +12,23 @@
     <div class="lock" id="lock">
       <div class="shackle"></div>
       <div class="body"></div>
+      <span id="lockDesc" class="sr-only">Lucchetto chiuso</span>
     </div>
     <div class="inputs">
       <div>
         <input type="password" id="pass1" placeholder="Password 1">
-        <span class="indicator" id="ind1"></span>
+        <span class="indicator" id="ind1" aria-hidden="true"></span>
+        <span class="sr-only" id="ind1-text">In attesa</span>
       </div>
       <div>
         <input type="password" id="pass2" placeholder="Password 2">
-        <span class="indicator" id="ind2"></span>
+        <span class="indicator" id="ind2" aria-hidden="true"></span>
+        <span class="sr-only" id="ind2-text">In attesa</span>
       </div>
       <div>
         <input type="password" id="pass3" placeholder="Password 3">
-        <span class="indicator" id="ind3"></span>
+        <span class="indicator" id="ind3" aria-hidden="true"></span>
+        <span class="sr-only" id="ind3-text">In attesa</span>
       </div>
     </div>
     <button id="submitBtn">Invia</button>
