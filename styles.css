@@ -1,0 +1,39 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 2rem;
+  text-align: center;
+}
+
+.inputs div {
+  margin-bottom: 1rem;
+}
+
+.indicator {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+.success {
+  background-color: orange;
+  border-radius: 50%;
+}
+
+.error {
+  background-color: red;
+  border-radius: 50%;
+}
+
+#message {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  color: green;
+  animation: fade 1s forwards;
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
