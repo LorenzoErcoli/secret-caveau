@@ -1,9 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
 body {
-  font-family: 'Courier New', monospace;
+  font-family: 'Orbitron', monospace;
   margin: 2rem;
   text-align: center;
   background-color: #0d0d0d;
   color: #c0fffc;
+  position: relative;
+  overflow: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.03) 2px,
+    rgba(0, 0, 0, 0) 2px,
+    rgba(0, 0, 0, 0) 4px
+  );
+  animation: scanlines 4s linear infinite;
 }
 
 .panel {
@@ -11,6 +33,44 @@ body {
   padding: 2rem;
   border: 2px solid #0ff;
   box-shadow: 0 0 15px #0ff;
+}
+
+.glitch {
+  animation: glitch 2s infinite;
+}
+
+.lock {
+  width: 60px;
+  margin: 1rem auto;
+  position: relative;
+}
+
+.lock .body {
+  width: 60px;
+  height: 60px;
+  border: 2px solid #0ff;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 10px #0ff;
+}
+
+.lock .shackle {
+  position: absolute;
+  top: -40px;
+  left: 8px;
+  width: 44px;
+  height: 40px;
+  border: 2px solid #0ff;
+  border-bottom: none;
+  border-radius: 25px 25px 0 0;
+  background: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 10px #0ff;
+  transform-origin: center bottom;
+  transition: transform 1s ease;
+}
+
+.lock.open .shackle {
+  transform: rotate(-45deg) translateY(-10px);
 }
 
 .inputs div {
@@ -34,6 +94,10 @@ button {
   font-weight: bold;
   box-shadow: 0 0 8px #0ff;
   transition: background 0.3s;
+}
+
+button.fade {
+  animation: fadeOut 1s forwards;
 }
 
 button:hover {
@@ -66,19 +130,43 @@ button:hover {
   font-size: 2rem;
   color: #0f0;
   text-shadow: 0 0 10px #0f0, 0 0 20px #0f0;
-  animation: fade 1s forwards, flicker 2s linear infinite;
 }
 
 #message.show {
   display: block;
+  animation: fade 1s forwards;
 }
 
-@keyframes flicker {
-  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
-  20%, 24%, 55% { opacity: 0.4; }
+#message.glow {
+  color: #0f0;
+  text-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 30px #0f0;
+}
+
+#message.error {
+  color: red;
+  text-shadow: 0 0 5px red;
+  animation: glitch 1s infinite;
 }
 
 @keyframes fade {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+@keyframes glitch {
+  0% { text-shadow: 2px 0 red, -2px 0 cyan; }
+  20% { text-shadow: -2px 0 red, 2px 0 cyan; }
+  40% { text-shadow: 2px 0 red, -2px 0 cyan; }
+  60% { text-shadow: -2px 0 red, 2px 0 cyan; }
+  80% { text-shadow: 2px 0 red, -2px 0 cyan; }
+  100% { text-shadow: 0 0 red, 0 0 cyan; }
+}
+
+@keyframes scanlines {
+  from { background-position: 0 0; }
+  to { background-position: 0 4px; }
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; }
 }
