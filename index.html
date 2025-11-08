@@ -3,74 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terminale del Dott. Vortex</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Special+Elite&display=swap" rel="stylesheet">
+  <title>Console di Accesso - Dr. Vortex</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="lab-overlay"></div>
-  <main class="panel" role="application" aria-labelledby="title">
-    <header class="panel__header">
-      <div class="header__badge">LAB-13</div>
-      <h1 id="title" class="title">Console di Accesso &laquo;Dr. Vortex&raquo;</h1>
-      <div class="header__badge header__badge--warning">ATTENZIONE</div>
+  <main class="console" role="main">
+    <header class="console__header">
+      <span class="console__badge" aria-hidden="true">LAB-13</span>
+      <h1 class="console__title">Console di Accesso «Dr. Vortex»</h1>
+      <p class="console__alert" role="status">ATTENZIONE</p>
+      <p class="console__subtitle">Sistema di contenzione criogenico bloccato</p>
     </header>
 
-    <section class="panel__status" aria-live="polite">
-      <div class="status-light" aria-hidden="true"></div>
-      <div class="status-light status-light--amber" aria-hidden="true"></div>
-      <div class="status-light status-light--red" aria-hidden="true"></div>
-      <p class="status-text">Sistema di contenzione criogenico bloccato</p>
+    <section class="console__avatar" aria-hidden="true">
+      <div class="avatar">
+        <div class="avatar__visor"></div>
+        <div class="avatar__coat"></div>
+        <div class="avatar__book"></div>
+      </div>
     </section>
 
-    <div class="lock" id="lock" aria-hidden="true">
-      <div class="lock__shackle"></div>
-      <div class="lock__body">
-        <div class="lock__dial"></div>
-        <div class="lock__dial lock__dial--shadow"></div>
-      </div>
-    </div>
-    <span id="lockDesc" class="sr-only">Lucchetto chiuso</span>
-
-    <section class="panel__inputs">
-      <h2 class="section-title">Inserire le quattro parole di attivazione</h2>
-      <div class="inputs">
-        <label>
-          <span class="input-label">Sequenza Alfa</span>
-          <input type="password" id="pass1" placeholder="••••••" autocomplete="off">
-          <span class="indicator" id="ind1" aria-hidden="true"></span>
-          <span class="sr-only" id="ind1-text">In attesa</span>
-        </label>
-        <label>
-          <span class="input-label">Sequenza Beta</span>
-          <input type="password" id="pass2" placeholder="••••••" autocomplete="off">
-          <span class="indicator" id="ind2" aria-hidden="true"></span>
-          <span class="sr-only" id="ind2-text">In attesa</span>
-        </label>
-        <label>
-          <span class="input-label">Sequenza Gamma</span>
-          <input type="password" id="pass3" placeholder="••••••" autocomplete="off">
-          <span class="indicator" id="ind3" aria-hidden="true"></span>
-          <span class="sr-only" id="ind3-text">In attesa</span>
-        </label>
-        <label>
-          <span class="input-label">Sequenza Delta</span>
-          <input type="password" id="pass4" placeholder="••••••" autocomplete="off">
-          <span class="indicator" id="ind4" aria-hidden="true"></span>
-          <span class="sr-only" id="ind4-text">In attesa</span>
-        </label>
-      </div>
-      <button id="submitBtn" class="panel__button" aria-describedby="lockDesc">Avvia decrittazione</button>
+    <section class="console__instructions">
+      <h2>Inserire le quattro parole di attivazione</h2>
+      <form id="accessForm" autocomplete="off" novalidate>
+        <div class="field-row">
+          <label class="field" for="seqAlpha">
+            <span class="field__label">Sequenza Alfa</span>
+            <input id="seqAlpha" name="seqAlpha" type="password" maxlength="12" aria-describedby="alpha-status" required>
+            <span class="field__status" id="alpha-status" data-status>In attesa</span>
+          </label>
+          <label class="field" for="seqBeta">
+            <span class="field__label">Sequenza Beta</span>
+            <input id="seqBeta" name="seqBeta" type="password" maxlength="12" aria-describedby="beta-status" required>
+            <span class="field__status" id="beta-status" data-status>In attesa</span>
+          </label>
+        </div>
+        <div class="field-row">
+          <label class="field" for="seqGamma">
+            <span class="field__label">Sequenza Gamma</span>
+            <input id="seqGamma" name="seqGamma" type="password" maxlength="12" aria-describedby="gamma-status" required>
+            <span class="field__status" id="gamma-status" data-status>In attesa</span>
+          </label>
+          <label class="field" for="seqDelta">
+            <span class="field__label">Sequenza Delta</span>
+            <input id="seqDelta" name="seqDelta" type="password" maxlength="12" aria-describedby="delta-status" required>
+            <span class="field__status" id="delta-status" data-status>In attesa</span>
+          </label>
+        </div>
+        <button type="submit" class="console__submit">Avvia protocolli</button>
+      </form>
     </section>
 
-    <section id="message" class="panel__message" aria-live="assertive"></section>
-    <section id="secret" class="panel__secret" aria-hidden="true">
+    <section class="console__output" aria-live="polite" aria-atomic="true">
       <h2>Codice Segreto</h2>
-      <p><span class="secret__label">Sequenza di sblocco:</span> <span class="secret__code">357</span></p>
+      <p id="secretCode" class="console__code" data-animate="false">In attesa di decriptazione…</p>
     </section>
   </main>
+
+  <div class="scanlines" aria-hidden="true"></div>
   <script src="script.js"></script>
 </body>
 </html>
