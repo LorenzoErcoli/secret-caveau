@@ -156,25 +156,13 @@ body::after {
 
 .scientist-icon {
   position: relative;
-  width: clamp(90px, 24vw, 110px);
-  margin: 0 auto 1.2rem;
-  padding-bottom: clamp(90px, 24vw, 110px);
-  --icon-scale: 0.5;
-  --icon-translate: 0px;
-}
-
-.scientist-icon__figure {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 200%;
-  height: 200%;
+  width: clamp(180px, 24vw, 220px);
+  height: clamp(180px, 24vw, 220px);
+  margin: 0 auto 1.6rem;
   display: grid;
   place-items: center;
   filter: drop-shadow(0 18px 32px rgba(0, 0, 0, 0.55));
   transition: transform 0.6s ease, filter 0.6s ease;
-  transform: translate(-50%, var(--icon-translate)) scale(var(--icon-scale));
-  transform-origin: center top;
 }
 
 .scientist-icon__halo {
@@ -314,11 +302,7 @@ body::after {
 }
 
 .scientist-icon--active {
-  --icon-scale: 0.52;
-  --icon-translate: -6px;
-}
-
-.scientist-icon--active .scientist-icon__figure {
+  transform: translateY(-8px) scale(1.04);
   filter: drop-shadow(0 20px 40px rgba(47, 243, 255, 0.35));
 }
 
@@ -329,6 +313,65 @@ body::after {
 
 .scientist-icon--active .scientist-icon__glow {
   background: radial-gradient(circle, rgba(142, 255, 0, 0.45), transparent 75%);
+.access-icon {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 1.5rem;
+  display: grid;
+  place-items: center;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.6));
+  transition: transform 0.6s ease;
+}
+
+.access-icon__ring {
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 3px solid rgba(47, 243, 255, 0.65);
+  box-shadow: 0 0 25px rgba(47, 243, 255, 0.4);
+  animation: rotate-slow 6s linear infinite;
+}
+
+.access-icon__ring--outer {
+  width: 140px;
+  height: 140px;
+  border-color: rgba(142, 255, 0, 0.5);
+  animation-duration: 9s;
+  animation-direction: reverse;
+}
+
+.access-icon__arrow {
+  width: 44px;
+  height: 44px;
+  clip-path: polygon(0 30%, 65% 30%, 65% 0, 100% 50%, 65% 100%, 65% 70%, 0 70%);
+  background: linear-gradient(135deg, rgba(142, 255, 0, 0.9), rgba(47, 243, 255, 0.5));
+  filter: drop-shadow(0 0 14px rgba(142, 255, 0, 0.6));
+  transform: translateX(-6px);
+}
+
+.access-icon__pulse {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(47, 243, 255, 0.85);
+  box-shadow: 0 0 22px rgba(47, 243, 255, 0.9);
+  animation: pulse-core 2.2s ease-in-out infinite;
+}
+
+.access-icon--active {
+  transform: translateY(-8px) scale(1.05);
+}
+
+.access-icon--active .access-icon__pulse {
+  animation: pulse-core 1.2s ease-in-out infinite;
+}
+
+.access-icon--active .access-icon__ring {
+  border-color: rgba(142, 255, 0, 0.9);
+  box-shadow: 0 0 30px rgba(142, 255, 0, 0.6);
 }
 
 .panel__inputs {

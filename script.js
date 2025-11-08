@@ -25,6 +25,7 @@ document.getElementById('submitBtn').addEventListener('click', function () {
 
   const msg = document.getElementById('message');
   const scientistIcon = document.getElementById('scientistIcon');
+  const accessIcon = document.getElementById('accessIcon');
   const accessDesc = document.getElementById('accessDesc');
   const btn = document.getElementById('submitBtn');
   const secret = document.getElementById('secret');
@@ -32,6 +33,8 @@ document.getElementById('submitBtn').addEventListener('click', function () {
   if (allCorrect) {
     scientistIcon.classList.add('scientist-icon--active');
     accessDesc.textContent = 'Ritratto del Dr. Vortex, accesso aperto';
+    accessIcon.classList.add('access-icon--active');
+    accessDesc.textContent = 'Accesso aperto';
     btn.classList.add('panel__button--disabled');
     btn.disabled = true;
     msg.className = 'panel__message panel__message--success show';
@@ -42,6 +45,8 @@ document.getElementById('submitBtn').addEventListener('click', function () {
   } else {
     scientistIcon.classList.remove('scientist-icon--active');
     accessDesc.textContent = 'Ritratto del Dr. Vortex, accesso chiuso';
+    accessIcon.classList.remove('access-icon--active');
+    accessDesc.textContent = 'Accesso chiuso';
     btn.classList.remove('panel__button--disabled');
     btn.disabled = false;
     msg.className = 'panel__message panel__message--error show';
