@@ -25,14 +25,13 @@
       <p class="status-text">Sistema di contenzione criogenico bloccato</p>
     </section>
 
-    <div class="lock" id="lock" aria-hidden="true">
-      <div class="lock__shackle"></div>
-      <div class="lock__body">
-        <div class="lock__dial"></div>
-        <div class="lock__dial lock__dial--shadow"></div>
-      </div>
+    <div class="access-icon" id="accessIcon" aria-hidden="true">
+      <div class="access-icon__ring"></div>
+      <div class="access-icon__ring access-icon__ring--outer"></div>
+      <div class="access-icon__arrow"></div>
+      <div class="access-icon__pulse"></div>
     </div>
-    <span id="lockDesc" class="sr-only">Lucchetto chiuso</span>
+    <span id="accessDesc" class="sr-only">Accesso chiuso</span>
 
     <section class="panel__inputs">
       <h2 class="section-title">Inserire le quattro parole di attivazione</h2>
@@ -62,7 +61,7 @@
           <span class="sr-only" id="ind4-text">In attesa</span>
         </label>
       </div>
-      <button id="submitBtn" class="panel__button" aria-describedby="lockDesc">Avvia decrittazione</button>
+      <button id="submitBtn" class="panel__button" aria-describedby="accessDesc">Avvia decrittazione</button>
     </section>
 
     <section id="message" class="panel__message" aria-live="assertive"></section>
