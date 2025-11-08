@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Console di Accesso - Dr. Vortex</title>
+  <title>Secret Caveau</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -15,48 +15,80 @@
       <p class="console__subtitle">Sistema di contenzione criogenico bloccato</p>
     </header>
 
-    <section class="console__avatar" aria-hidden="true">
-      <div class="avatar">
-        <div class="avatar__visor"></div>
-        <div class="avatar__coat"></div>
-        <div class="avatar__book"></div>
-      </div>
+    <section class="panel__status" aria-live="polite">
+      <div class="status-light" aria-hidden="true"></div>
+      <div class="status-light status-light--amber" aria-hidden="true"></div>
+      <div class="status-light status-light--red" aria-hidden="true"></div>
+      <p class="status-text">Sistema di contenzione criogenico bloccato</p>
     </section>
 
-    <section class="console__instructions">
-      <h2>Inserire le quattro parole di attivazione</h2>
-      <form id="accessForm" autocomplete="off" novalidate>
-        <div class="field-row">
-          <label class="field" for="seqAlpha">
-            <span class="field__label">Sequenza Alfa</span>
-            <input id="seqAlpha" name="seqAlpha" type="password" maxlength="12" aria-describedby="alpha-status" required>
-            <span class="field__status" id="alpha-status" data-status>In attesa</span>
+    <div class="scientist-icon" id="scientistIcon" aria-hidden="true">
+      <div class="scientist-icon__halo"></div>
+      <div class="scientist-icon__glow"></div>
+      <div class="scientist-icon__body">
+        <div class="scientist-icon__head">
+          <div class="scientist-icon__hair"></div>
+          <div class="scientist-icon__glasses">
+            <span class="scientist-icon__lens"></span>
+            <span class="scientist-icon__bridge"></span>
+            <span class="scientist-icon__lens"></span>
+          </div>
+          <div class="scientist-icon__mask"></div>
+        </div>
+        <div class="scientist-icon__coat">
+          <span class="scientist-icon__lapel scientist-icon__lapel--left"></span>
+          <span class="scientist-icon__lapel scientist-icon__lapel--right"></span>
+          <span class="scientist-icon__badge"></span>
+        </div>
+      </div>
+    </div>
+    <span id="accessDesc" class="sr-only">Ritratto del Dr. Vortex, accesso chiuso</span>
+    <div class="access-icon" id="accessIcon" aria-hidden="true">
+      <div class="access-icon__ring"></div>
+      <div class="access-icon__ring access-icon__ring--outer"></div>
+      <div class="access-icon__arrow"></div>
+      <div class="access-icon__pulse"></div>
+    </div>
+    <span id="accessDesc" class="sr-only">Accesso chiuso</span>
+
+    <section class="panel__inputs">
+      <h2 class="section-title">Inserire le quattro parole di attivazione</h2>
+      <div class="inputs">
+        <div class="input-row">
+          <label>
+            <span class="input-label">Sequenza Alfa</span>
+            <input type="password" id="pass1" placeholder="••••••" autocomplete="off">
+            <span class="indicator" id="ind1" aria-hidden="true"></span>
+            <span class="sr-only" id="ind1-text">In attesa</span>
           </label>
-          <label class="field" for="seqBeta">
-            <span class="field__label">Sequenza Beta</span>
-            <input id="seqBeta" name="seqBeta" type="password" maxlength="12" aria-describedby="beta-status" required>
-            <span class="field__status" id="beta-status" data-status>In attesa</span>
+          <label>
+            <span class="input-label">Sequenza Beta</span>
+            <input type="password" id="pass2" placeholder="••••••" autocomplete="off">
+            <span class="indicator" id="ind2" aria-hidden="true"></span>
+            <span class="sr-only" id="ind2-text">In attesa</span>
           </label>
         </div>
-        <div class="field-row">
-          <label class="field" for="seqGamma">
-            <span class="field__label">Sequenza Gamma</span>
-            <input id="seqGamma" name="seqGamma" type="password" maxlength="12" aria-describedby="gamma-status" required>
-            <span class="field__status" id="gamma-status" data-status>In attesa</span>
+        <div class="input-row">
+          <label>
+            <span class="input-label">Sequenza Gamma</span>
+            <input type="password" id="pass3" placeholder="••••••" autocomplete="off">
+            <span class="indicator" id="ind3" aria-hidden="true"></span>
+            <span class="sr-only" id="ind3-text">In attesa</span>
           </label>
-          <label class="field" for="seqDelta">
-            <span class="field__label">Sequenza Delta</span>
-            <input id="seqDelta" name="seqDelta" type="password" maxlength="12" aria-describedby="delta-status" required>
-            <span class="field__status" id="delta-status" data-status>In attesa</span>
+          <label>
+            <span class="input-label">Sequenza Delta</span>
+            <input type="password" id="pass4" placeholder="••••••" autocomplete="off">
+            <span class="indicator" id="ind4" aria-hidden="true"></span>
+            <span class="sr-only" id="ind4-text">In attesa</span>
           </label>
         </div>
-        <button type="submit" class="console__submit">Avvia protocolli</button>
-      </form>
+      </div>
+      <button id="submitBtn" class="panel__button" aria-describedby="accessDesc">Avvia decrittazione</button>
     </section>
 
     <section class="console__output" aria-live="polite" aria-atomic="true">
       <h2>Codice Segreto</h2>
-      <p id="secretCode" class="console__code" data-animate="false">In attesa di decriptazione…</p>
+      <p><span class="secret__label">Codice di apertura dello scrigno:</span> <span class="secret__code">VX-42-ANT</span></p>
     </section>
   </main>
 

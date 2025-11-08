@@ -1,101 +1,51 @@
-const sequences = new Map([
-  ['seqAlpha', 'AURORA'],
-  ['seqBeta', 'CRIOGEN'],
-  ['seqGamma', 'VORTEX13'],
-  ['seqDelta', 'ANTIDOTO']
-]);
-
-const statusMessages = {
-  pending: 'In attesa',
-  success: 'Sequenza valida',
-  error: 'Sequenza errata'
-};
-
-const form = document.getElementById('accessForm');
-const codeDisplay = document.getElementById('secretCode');
-
-function resetFieldState(fieldLabel) {
-  fieldLabel.dataset.state = '';
-  const status = fieldLabel.querySelector('[data-status]');
-  status.textContent = statusMessages.pending;
-}
-
-function evaluateField(fieldLabel) {
-  const input = fieldLabel.querySelector('input');
-  const target = sequences.get(input.id);
-  const status = fieldLabel.querySelector('[data-status]');
-  const userValue = input.value.trim().toUpperCase();
-
-  if (!userValue) {
-    fieldLabel.dataset.state = '';
-    status.textContent = statusMessages.pending;
-    return false;
-  }
-
-  if (userValue === target) {
-    fieldLabel.dataset.state = 'success';
-    status.textContent = statusMessages.success;
-    return true;
-  }
-
-  fieldLabel.dataset.state = 'error';
-  status.textContent = statusMessages.error;
-  return false;
-}
-
-function setFormDisabled(disabled) {
-  form.querySelectorAll('input, button').forEach((control) => {
-    control.disabled = disabled;
-  });
-}
-
-function triggerDecryptAnimation(secretCode) {
-  codeDisplay.dataset.animate = 'true';
-  let iteration = 0;
-  const glyphs = '█▓▒░#@$&?';
-  const revealSteps = 18;
-  const finalText = secretCode;
-  const scrambleInterval = setInterval(() => {
-    const progress = Math.min(iteration / revealSteps, 1);
-    const revealLength = Math.floor(progress * finalText.length);
-    const scrambled = finalText
-      .split('')
-      .map((char, index) => {
-        if (index < revealLength) {
-          return char;
-        }
-        return glyphs[Math.floor(Math.random() * glyphs.length)];
-      })
-      .join('');
-    codeDisplay.textContent = scrambled;
-    iteration += 1;
-    if (progress >= 1) {
-      clearInterval(scrambleInterval);
-      codeDisplay.textContent = finalText;
-    }
-  }, 70);
-}
-
-form.addEventListener('submit', (event) => {
-  event.preventDefault();
-  let allValid = true;
-
-  form.querySelectorAll('.field').forEach((fieldLabel) => {
-    const result = evaluateField(fieldLabel);
-    if (!result) {
-      allValid = false;
+document.getElementById('submitBtn').addEventListener('click', function () {
+  const values = [
+    document.getElementById('pass1').value,
+    document.getElementById('pass2').value,
+    document.getElementById('pass3').value
+  ];
+  const targets = ['Giornata', 'Radio', 'Hollywood'];
+  let allCorrect = true;
+  values.forEach((val, idx) => {
+    const indicator = document.getElementById('ind' + (idx + 1));
+    const label = document.getElementById('ind' + (idx + 1) + '-text');
+    if (val === targets[idx]) {
+      indicator.className = 'indicator success';
+      label.textContent = 'Corretto';
+    } else {
+      indicator.className = 'indicator error';
+      label.textContent = 'Errato';
+      allCorrect = false;
     }
   });
-
-  if (allValid) {
-    setFormDisabled(true);
-    codeDisplay.textContent = 'ACCESSO CONCESSO — Preparare il reattore!';
-    setTimeout(() => {
-      triggerDecryptAnimation('VX-13-Ω-7 :: ANTIDOTO LIBERATO');
-    }, 900);
+  const msg = document.getElementById('message');
+  const scientistIcon = document.getElementById('scientistIcon');
+  const accessIcon = document.getElementById('accessIcon');
+  const accessDesc = document.getElementById('accessDesc');
+  const btn = document.getElementById('submitBtn');
+  if (allCorrect) {
+    scientistIcon.classList.add('scientist-icon--active');
+    accessDesc.textContent = 'Ritratto del Dr. Vortex, accesso aperto';
+    accessIcon.classList.add('access-icon--active');
+    accessDesc.textContent = 'Accesso aperto';
+    btn.classList.add('panel__button--disabled');
+    btn.disabled = true;
+    msg.className = 'panel__message panel__message--success show';
+    msg.textContent = 'ACCESSO CONCESSO — Preparare il reattore!';
+    secret.setAttribute('aria-hidden', 'false');
+    secret.classList.add('panel__secret--visible');
+    document.querySelector('.panel__inputs').classList.add('panel__inputs--collapsed');
   } else {
-    codeDisplay.dataset.animate = 'false';
-    codeDisplay.textContent = 'Sequenze non valide — riprovare';
+    scientistIcon.classList.remove('scientist-icon--active');
+    accessDesc.textContent = 'Ritratto del Dr. Vortex, accesso chiuso';
+    accessIcon.classList.remove('access-icon--active');
+    accessDesc.textContent = 'Accesso chiuso';
+    btn.classList.remove('panel__button--disabled');
+    btn.disabled = false;
+    msg.className = 'panel__message panel__message--error show';
+    msg.textContent = 'ACCESSO NEGATO — Ri-calibrare il flusso neurale!';
+    secret.setAttribute('aria-hidden', 'true');
+    secret.classList.remove('panel__secret--visible');
   }
 });
 
