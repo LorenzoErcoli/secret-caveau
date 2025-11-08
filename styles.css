@@ -26,7 +26,7 @@ body {
     var(--bg-dark);
   color: var(--text-primary);
   font-family: 'Share Tech Mono', monospace;
-  overflow: hidden;
+  padding: clamp(1.5rem, 4vh, 2.5rem) 1rem;
 }
 
 .lab-overlay {
@@ -70,6 +70,7 @@ body::after {
   background: var(--bg-panel);
   backdrop-filter: blur(8px);
   overflow: hidden;
+  margin: 0 auto;
 }
 
 .panel::before,
@@ -725,6 +726,10 @@ input[type='password']:focus {
 }
 
 @media (max-width: 720px) {
+  body {
+    align-items: flex-start;
+  }
+
   .panel {
     padding: 2rem;
   }
