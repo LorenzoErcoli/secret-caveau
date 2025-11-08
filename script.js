@@ -35,7 +35,7 @@ document.getElementById('submitBtn').addEventListener('click', function () {
     btn.classList.add('panel__button--disabled');
     btn.disabled = true;
     msg.className = 'panel__message panel__message--success show';
-    msg.textContent = 'ACCESSO CONCESSO — Preparare il reattore!';
+    msg.textContent = "ACCESSO CONCESSO — Aprire lo scrigno dell'antidoto!";
     secret.setAttribute('aria-hidden', 'false');
     secret.classList.add('panel__secret--visible');
     document.querySelector('.panel__inputs').classList.add('panel__inputs--collapsed');
