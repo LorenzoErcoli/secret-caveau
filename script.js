@@ -24,14 +24,14 @@ document.getElementById('submitBtn').addEventListener('click', function () {
   });
 
   const msg = document.getElementById('message');
-  const lock = document.getElementById('lock');
-  const lockDesc = document.getElementById('lockDesc');
+  const scientistIcon = document.getElementById('scientistIcon');
+  const accessDesc = document.getElementById('accessDesc');
   const btn = document.getElementById('submitBtn');
   const secret = document.getElementById('secret');
 
   if (allCorrect) {
-    lock.classList.add('lock--open');
-    lockDesc.textContent = 'Lucchetto aperto';
+    scientistIcon.classList.add('scientist-icon--active');
+    accessDesc.textContent = 'Ritratto del Dr. Vortex, accesso aperto';
     btn.classList.add('panel__button--disabled');
     btn.disabled = true;
     msg.className = 'panel__message panel__message--success show';
@@ -40,8 +40,8 @@ document.getElementById('submitBtn').addEventListener('click', function () {
     secret.classList.add('panel__secret--visible');
     document.querySelector('.panel__inputs').classList.add('panel__inputs--collapsed');
   } else {
-    lock.classList.remove('lock--open');
-    lockDesc.textContent = 'Lucchetto chiuso';
+    scientistIcon.classList.remove('scientist-icon--active');
+    accessDesc.textContent = 'Ritratto del Dr. Vortex, accesso chiuso';
     btn.classList.remove('panel__button--disabled');
     btn.disabled = false;
     msg.className = 'panel__message panel__message--error show';
