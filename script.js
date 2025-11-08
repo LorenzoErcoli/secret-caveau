@@ -19,21 +19,32 @@ document.getElementById('submitBtn').addEventListener('click', function () {
     }
   });
   const msg = document.getElementById('message');
-  const lock = document.getElementById('lock');
-  const lockDesc = document.getElementById('lockDesc');
+  const scientistIcon = document.getElementById('scientistIcon');
+  const accessIcon = document.getElementById('accessIcon');
+  const accessDesc = document.getElementById('accessDesc');
   const btn = document.getElementById('submitBtn');
   if (allCorrect) {
-    document.querySelector('.inputs').style.display = 'none';
-    lock.classList.add('open');
-    lockDesc.textContent = 'Lucchetto aperto';
-    btn.classList.add('fade');
-    setTimeout(() => {
-      msg.textContent = 'ACCESSO CONCESSO';
-      msg.className = 'show glow';
-    }, 1000);
+    scientistIcon.classList.add('scientist-icon--active');
+    accessDesc.textContent = 'Ritratto del Dr. Vortex, accesso aperto';
+    accessIcon.classList.add('access-icon--active');
+    accessDesc.textContent = 'Accesso aperto';
+    btn.classList.add('panel__button--disabled');
+    btn.disabled = true;
+    msg.className = 'panel__message panel__message--success show';
+    msg.textContent = 'ACCESSO CONCESSO — Preparare il reattore!';
+    secret.setAttribute('aria-hidden', 'false');
+    secret.classList.add('panel__secret--visible');
+    document.querySelector('.panel__inputs').classList.add('panel__inputs--collapsed');
   } else {
-    msg.textContent = 'ACCESSO NEGATO';
-    msg.className = 'show error';
-    lockDesc.textContent = 'Lucchetto chiuso';
+    scientistIcon.classList.remove('scientist-icon--active');
+    accessDesc.textContent = 'Ritratto del Dr. Vortex, accesso chiuso';
+    accessIcon.classList.remove('access-icon--active');
+    accessDesc.textContent = 'Accesso chiuso';
+    btn.classList.remove('panel__button--disabled');
+    btn.disabled = false;
+    msg.className = 'panel__message panel__message--error show';
+    msg.textContent = 'ACCESSO NEGATO — Ri-calibrare il flusso neurale!';
+    secret.setAttribute('aria-hidden', 'true');
+    secret.classList.remove('panel__secret--visible');
   }
 });
