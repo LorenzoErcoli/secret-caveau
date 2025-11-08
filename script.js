@@ -24,14 +24,14 @@ document.getElementById('submitBtn').addEventListener('click', function () {
   });
 
   const msg = document.getElementById('message');
-  const lock = document.getElementById('lock');
-  const lockDesc = document.getElementById('lockDesc');
+  const accessIcon = document.getElementById('accessIcon');
+  const accessDesc = document.getElementById('accessDesc');
   const btn = document.getElementById('submitBtn');
   const secret = document.getElementById('secret');
 
   if (allCorrect) {
-    lock.classList.add('lock--open');
-    lockDesc.textContent = 'Lucchetto aperto';
+    accessIcon.classList.add('access-icon--active');
+    accessDesc.textContent = 'Accesso aperto';
     btn.classList.add('panel__button--disabled');
     btn.disabled = true;
     msg.className = 'panel__message panel__message--success show';
@@ -40,8 +40,8 @@ document.getElementById('submitBtn').addEventListener('click', function () {
     secret.classList.add('panel__secret--visible');
     document.querySelector('.panel__inputs').classList.add('panel__inputs--collapsed');
   } else {
-    lock.classList.remove('lock--open');
-    lockDesc.textContent = 'Lucchetto chiuso';
+    accessIcon.classList.remove('access-icon--active');
+    accessDesc.textContent = 'Accesso chiuso';
     btn.classList.remove('panel__button--disabled');
     btn.disabled = false;
     msg.className = 'panel__message panel__message--error show';
