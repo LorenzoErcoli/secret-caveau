@@ -24,12 +24,15 @@ document.getElementById('submitBtn').addEventListener('click', function () {
   });
 
   const msg = document.getElementById('message');
+  const scientistIcon = document.getElementById('scientistIcon');
   const accessIcon = document.getElementById('accessIcon');
   const accessDesc = document.getElementById('accessDesc');
   const btn = document.getElementById('submitBtn');
   const secret = document.getElementById('secret');
 
   if (allCorrect) {
+    scientistIcon.classList.add('scientist-icon--active');
+    accessDesc.textContent = 'Ritratto del Dr. Vortex, accesso aperto';
     accessIcon.classList.add('access-icon--active');
     accessDesc.textContent = 'Accesso aperto';
     btn.classList.add('panel__button--disabled');
@@ -40,6 +43,8 @@ document.getElementById('submitBtn').addEventListener('click', function () {
     secret.classList.add('panel__secret--visible');
     document.querySelector('.panel__inputs').classList.add('panel__inputs--collapsed');
   } else {
+    scientistIcon.classList.remove('scientist-icon--active');
+    accessDesc.textContent = 'Ritratto del Dr. Vortex, accesso chiuso';
     accessIcon.classList.remove('access-icon--active');
     accessDesc.textContent = 'Accesso chiuso';
     btn.classList.remove('panel__button--disabled');

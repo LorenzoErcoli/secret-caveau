@@ -153,6 +153,165 @@ body::after {
   color: var(--text-muted);
 }
 
+.scientist-icon {
+  position: relative;
+  width: clamp(180px, 24vw, 220px);
+  height: clamp(180px, 24vw, 220px);
+  margin: 0 auto 1.6rem;
+  display: grid;
+  place-items: center;
+  filter: drop-shadow(0 18px 32px rgba(0, 0, 0, 0.55));
+  transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+.scientist-icon__halo {
+  position: absolute;
+  inset: 8%;
+  border-radius: 50%;
+  border: 2px dashed rgba(47, 243, 255, 0.65);
+  animation: rotate-slow 14s linear infinite;
+  mix-blend-mode: screen;
+}
+
+.scientist-icon__glow {
+  position: absolute;
+  width: 75%;
+  height: 75%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(47, 243, 255, 0.35), transparent 70%);
+  filter: blur(0.5px);
+  animation: breathe 5s ease-in-out infinite;
+}
+
+.scientist-icon__body {
+  position: relative;
+  width: 64%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.scientist-icon__head {
+  position: relative;
+  width: 86px;
+  height: 86px;
+  border-radius: 38% 38% 42% 42%;
+  background: linear-gradient(160deg, rgba(240, 248, 255, 0.95), rgba(200, 220, 255, 0.75));
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+
+.scientist-icon__hair {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 104px;
+  height: 58px;
+  background: radial-gradient(circle at 40% 50%, rgba(47, 243, 255, 0.2), transparent 65%),
+    linear-gradient(130deg, rgba(60, 80, 145, 0.9), rgba(25, 35, 70, 0.95));
+  border-radius: 48% 52% 35% 35%;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+}
+
+.scientist-icon__glasses {
+  position: absolute;
+  top: 38px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.scientist-icon__lens {
+  display: block;
+  width: 32px;
+  height: 26px;
+  border-radius: 40%;
+  border: 2px solid rgba(47, 243, 255, 0.75);
+  background: radial-gradient(circle at 30% 30%, rgba(47, 243, 255, 0.25), rgba(12, 18, 30, 0.95));
+  box-shadow: inset 0 0 12px rgba(47, 243, 255, 0.45);
+}
+
+.scientist-icon__bridge {
+  display: block;
+  width: 12px;
+  height: 10px;
+  border-radius: 40%;
+  border-top: 2px solid rgba(47, 243, 255, 0.75);
+  border-bottom: 2px solid rgba(47, 243, 255, 0.2);
+  background: linear-gradient(90deg, rgba(47, 243, 255, 0.2), rgba(142, 255, 0, 0.25));
+  transform: translateY(-4px);
+}
+
+.scientist-icon__mask {
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 68px;
+  height: 38px;
+  border-radius: 16px 16px 22px 22px;
+  background: linear-gradient(180deg, rgba(180, 245, 255, 0.9), rgba(140, 210, 255, 0.85));
+  box-shadow: inset 0 -6px 14px rgba(47, 243, 255, 0.25);
+}
+
+.scientist-icon__coat {
+  position: relative;
+  width: 120px;
+  height: 110px;
+  border-radius: 32px 32px 24px 24px;
+  background: linear-gradient(160deg, rgba(250, 250, 255, 0.95), rgba(220, 230, 255, 0.85));
+  box-shadow: inset 0 -14px 25px rgba(47, 243, 255, 0.18), 0 14px 28px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+
+.scientist-icon__lapel {
+  position: absolute;
+  top: 26px;
+  width: 64px;
+  height: 68px;
+  background: linear-gradient(160deg, rgba(160, 200, 255, 0.35), rgba(230, 240, 255, 0.05));
+  border-radius: 12px;
+  box-shadow: inset 0 0 18px rgba(47, 243, 255, 0.15);
+}
+
+.scientist-icon__lapel--left {
+  left: -6px;
+  transform: rotate(8deg);
+}
+
+.scientist-icon__lapel--right {
+  right: -6px;
+  transform: rotate(-8deg);
+}
+
+.scientist-icon__badge {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 54px;
+  height: 18px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(47, 243, 255, 0.6), rgba(142, 255, 0, 0.45));
+  box-shadow: 0 0 12px rgba(47, 243, 255, 0.6);
+}
+
+.scientist-icon--active {
+  transform: translateY(-8px) scale(1.04);
+  filter: drop-shadow(0 20px 40px rgba(47, 243, 255, 0.35));
+}
+
+.scientist-icon--active .scientist-icon__halo {
+  border-color: rgba(142, 255, 0, 0.8);
+  animation-duration: 9s;
+}
+
+.scientist-icon--active .scientist-icon__glow {
+  background: radial-gradient(circle, rgba(142, 255, 0, 0.45), transparent 75%);
 .access-icon {
   position: relative;
   width: 150px;
@@ -239,8 +398,21 @@ body::after {
 .inputs {
   display: grid;
   gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  width: 100%;
   margin-bottom: 2rem;
+}
+
+.input-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  padding: 1.4rem clamp(1rem, 3vw, 1.8rem);
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(47, 243, 255, 0.1), rgba(142, 255, 0, 0.05)),
+    rgba(6, 12, 24, 0.72);
+  border: 1px solid rgba(47, 243, 255, 0.32);
+  box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.55);
 }
 
 label {
@@ -271,6 +443,11 @@ input[type='password'] {
   letter-spacing: 0.2em;
   text-transform: lowercase;
   box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+.input-row label {
+  width: 100%;
+  height: 100%;
 }
 
 input[type='password']:focus {
@@ -483,6 +660,18 @@ input[type='password']:focus {
   }
 }
 
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(0.95);
+    opacity: 0.45;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.85;
+  }
+}
+
 @keyframes sweep {
   0% {
     transform: translateX(-150%);
@@ -556,5 +745,10 @@ input[type='password']:focus {
 
   .secret__code {
     margin-left: 0.6rem;
+  }
+
+  .input-row {
+    grid-template-columns: 1fr;
+    padding: 1.1rem 1.2rem;
   }
 }
