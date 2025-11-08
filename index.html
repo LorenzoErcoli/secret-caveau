@@ -7,12 +7,12 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="lab-overlay"></div>
-  <main class="panel" role="application" aria-labelledby="title">
-    <header class="panel__header">
-      <div class="header__badge">LAB-13</div>
-      <h1 id="title" class="title">Console di Accesso &laquo;Dr. Vortex&raquo;</h1>
-      <div class="header__badge header__badge--warning">ATTENZIONE</div>
+  <main class="console" role="main">
+    <header class="console__header">
+      <span class="console__badge" aria-hidden="true">LAB-13</span>
+      <h1 class="console__title">Console di Accesso «Dr. Vortex»</h1>
+      <p class="console__alert" role="status">ATTENZIONE</p>
+      <p class="console__subtitle">Sistema di contenzione criogenico bloccato</p>
     </header>
 
     <section class="panel__status" aria-live="polite">
@@ -86,12 +86,13 @@
       <button id="submitBtn" class="panel__button" aria-describedby="accessDesc">Avvia decrittazione</button>
     </section>
 
-    <section id="message" class="panel__message" aria-live="assertive"></section>
-    <section id="secret" class="panel__secret" aria-hidden="true">
+    <section class="console__output" aria-live="polite" aria-atomic="true">
       <h2>Codice Segreto</h2>
       <p><span class="secret__label">Codice di apertura dello scrigno:</span> <span class="secret__code">VX-42-ANT</span></p>
     </section>
   </main>
+
+  <div class="scanlines" aria-hidden="true"></div>
   <script src="script.js"></script>
 </body>
 </html>

@@ -48,3 +48,12 @@ document.getElementById('submitBtn').addEventListener('click', function () {
     secret.classList.remove('panel__secret--visible');
   }
 });
+
+form.querySelectorAll('input').forEach((input) => {
+  const fieldLabel = input.closest('.field');
+  input.addEventListener('input', () => {
+    resetFieldState(fieldLabel);
+    codeDisplay.dataset.animate = 'false';
+    codeDisplay.textContent = 'In attesa di decriptazione…';
+  });
+});
