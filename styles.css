@@ -590,14 +590,31 @@ input[type='password']:focus {
   opacity: 1;
 }
 
-.sr-only {
+.secret__code::after {
+  content: "";
   position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 0%, rgba(47, 243, 255, 0.8) 40%, transparent 70%);
+  transform: translateX(-100%);
+  animation: sweep 2.4s ease-in-out infinite;
+  opacity: 0;
+}
+
+.panel__secret--visible .secret__code::after {
+  opacity: 1;
+}
+
+.sr-only {
+  position: absolute !important;
   width: 1px;
   height: 1px;
   padding: 0;
-  margin: -1px;
+  margin: 0;
   overflow: hidden;
+  top: auto;
+  left: -10000px;
   clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
   white-space: nowrap;
   border: 0;
 }
