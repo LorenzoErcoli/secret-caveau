@@ -26,28 +26,33 @@
     </section>
 
     <div class="scientist-icon" id="scientistIcon" aria-hidden="true">
-      <div class="scientist-icon__figure">
-        <div class="scientist-icon__halo"></div>
-        <div class="scientist-icon__glow"></div>
-        <div class="scientist-icon__body">
-          <div class="scientist-icon__head">
-            <div class="scientist-icon__hair"></div>
-            <div class="scientist-icon__glasses">
-              <span class="scientist-icon__lens"></span>
-              <span class="scientist-icon__bridge"></span>
-              <span class="scientist-icon__lens"></span>
-            </div>
-            <div class="scientist-icon__mask"></div>
+      <div class="scientist-icon__halo"></div>
+      <div class="scientist-icon__glow"></div>
+      <div class="scientist-icon__body">
+        <div class="scientist-icon__head">
+          <div class="scientist-icon__hair"></div>
+          <div class="scientist-icon__glasses">
+            <span class="scientist-icon__lens"></span>
+            <span class="scientist-icon__bridge"></span>
+            <span class="scientist-icon__lens"></span>
           </div>
-          <div class="scientist-icon__coat">
-            <span class="scientist-icon__lapel scientist-icon__lapel--left"></span>
-            <span class="scientist-icon__lapel scientist-icon__lapel--right"></span>
-            <span class="scientist-icon__badge"></span>
-          </div>
+          <div class="scientist-icon__mask"></div>
+        </div>
+        <div class="scientist-icon__coat">
+          <span class="scientist-icon__lapel scientist-icon__lapel--left"></span>
+          <span class="scientist-icon__lapel scientist-icon__lapel--right"></span>
+          <span class="scientist-icon__badge"></span>
         </div>
       </div>
     </div>
     <span id="accessDesc" class="sr-only">Ritratto del Dr. Vortex, accesso chiuso</span>
+    <div class="access-icon" id="accessIcon" aria-hidden="true">
+      <div class="access-icon__ring"></div>
+      <div class="access-icon__ring access-icon__ring--outer"></div>
+      <div class="access-icon__arrow"></div>
+      <div class="access-icon__pulse"></div>
+    </div>
+    <span id="accessDesc" class="sr-only">Accesso chiuso</span>
 
     <section class="panel__inputs">
       <h2 class="section-title">Inserire le quattro parole di attivazione</h2>
@@ -55,13 +60,13 @@
         <div class="input-row">
           <label>
             <span class="input-label">Sequenza Alfa</span>
-            <input type="password" id="pass1" placeholder="••••••" autocomplete="off" aria-describedby="ind1-text">
+            <input type="password" id="pass1" placeholder="••••••" autocomplete="off">
             <span class="indicator" id="ind1" aria-hidden="true"></span>
             <span class="sr-only" id="ind1-text">In attesa</span>
           </label>
           <label>
             <span class="input-label">Sequenza Beta</span>
-            <input type="password" id="pass2" placeholder="••••••" autocomplete="off" aria-describedby="ind2-text">
+            <input type="password" id="pass2" placeholder="••••••" autocomplete="off">
             <span class="indicator" id="ind2" aria-hidden="true"></span>
             <span class="sr-only" id="ind2-text">In attesa</span>
           </label>
@@ -69,13 +74,13 @@
         <div class="input-row">
           <label>
             <span class="input-label">Sequenza Gamma</span>
-            <input type="password" id="pass3" placeholder="••••••" autocomplete="off" aria-describedby="ind3-text">
+            <input type="password" id="pass3" placeholder="••••••" autocomplete="off">
             <span class="indicator" id="ind3" aria-hidden="true"></span>
             <span class="sr-only" id="ind3-text">In attesa</span>
           </label>
           <label>
             <span class="input-label">Sequenza Delta</span>
-            <input type="password" id="pass4" placeholder="••••••" autocomplete="off" aria-describedby="ind4-text">
+            <input type="password" id="pass4" placeholder="••••••" autocomplete="off">
             <span class="indicator" id="ind4" aria-hidden="true"></span>
             <span class="sr-only" id="ind4-text">In attesa</span>
           </label>
