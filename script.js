@@ -1,52 +1,39 @@
 document.getElementById('submitBtn').addEventListener('click', function () {
-  const inputs = [
-    document.getElementById('pass1'),
-    document.getElementById('pass2'),
-    document.getElementById('pass3'),
-    document.getElementById('pass4')
+  const values = [
+    document.getElementById('pass1').value,
+    document.getElementById('pass2').value,
+    document.getElementById('pass3').value
   ];
-
-  const values = inputs.map((input) => input.value.trim().toLowerCase());
-  const targets = ['drago', 'sale', 'neurotrasmettitore', 'sistema'];
+  const targets = ['Giornata', 'Radio', 'Hollywood'];
   let allCorrect = true;
-
   values.forEach((val, idx) => {
     const indicator = document.getElementById('ind' + (idx + 1));
     const label = document.getElementById('ind' + (idx + 1) + '-text');
     if (val === targets[idx]) {
-      indicator.className = 'indicator indicator--success';
+      indicator.className = 'indicator success';
       label.textContent = 'Corretto';
     } else {
-      indicator.className = 'indicator indicator--error';
+      indicator.className = 'indicator error';
       label.textContent = 'Errato';
       allCorrect = false;
     }
   });
-
   const msg = document.getElementById('message');
-  const scientistIcon = document.getElementById('scientistIcon');
-  const accessDesc = document.getElementById('accessDesc');
+  const lock = document.getElementById('lock');
+  const lockDesc = document.getElementById('lockDesc');
   const btn = document.getElementById('submitBtn');
-  const secret = document.getElementById('secret');
-
   if (allCorrect) {
-    scientistIcon.classList.add('scientist-icon--active');
-    accessDesc.textContent = 'Ritratto del Dr. Vortex, accesso aperto';
-    btn.classList.add('panel__button--disabled');
-    btn.disabled = true;
-    msg.className = 'panel__message panel__message--success show';
-    msg.textContent = 'ACCESSO CONCESSO — Preparare il reattore!';
-    secret.setAttribute('aria-hidden', 'false');
-    secret.classList.add('panel__secret--visible');
-    document.querySelector('.panel__inputs').classList.add('panel__inputs--collapsed');
+    document.querySelector('.inputs').style.display = 'none';
+    lock.classList.add('open');
+    lockDesc.textContent = 'Lucchetto aperto';
+    btn.classList.add('fade');
+    setTimeout(() => {
+      msg.textContent = 'ACCESSO CONCESSO';
+      msg.className = 'show glow';
+    }, 1000);
   } else {
-    scientistIcon.classList.remove('scientist-icon--active');
-    accessDesc.textContent = 'Ritratto del Dr. Vortex, accesso chiuso';
-    btn.classList.remove('panel__button--disabled');
-    btn.disabled = false;
-    msg.className = 'panel__message panel__message--error show';
-    msg.textContent = 'ACCESSO NEGATO — Ri-calibrare il flusso neurale!';
-    secret.setAttribute('aria-hidden', 'true');
-    secret.classList.remove('panel__secret--visible');
+    msg.textContent = 'ACCESSO NEGATO';
+    msg.className = 'show error';
+    lockDesc.textContent = 'Lucchetto chiuso';
   }
 });
